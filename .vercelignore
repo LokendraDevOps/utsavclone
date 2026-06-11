@@ -1,0 +1,7 @@
+.phpunit.cache
+storage/demo.sqlite
+tests
+tools
+.git
+node_modules
+vendor

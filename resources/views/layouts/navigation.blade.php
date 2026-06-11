@@ -1,7 +1,7 @@
 <nav x-data="{ open: false }" class="border-b border-amber-100 bg-white/80 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-            <a href="{{ route('user.dashboard') }}" class="flex items-center gap-3">
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
                 <div class="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-amber-500 via-orange-500 to-rose-500 text-white">ॐ</div>
                 <div>
                     <div class="text-xs uppercase tracking-[0.3em] text-amber-700">Divine Booking</div>
@@ -10,7 +10,7 @@
             </a>
 
             <div class="hidden items-center gap-6 text-sm font-medium md:flex">
-                <a href="{{ route('user.dashboard') }}">Dashboard</a>
+                <a href="{{ route('dashboard') }}">Dashboard</a>
                 <a href="{{ route('user.bookings.index') }}">Bookings</a>
                 <a href="{{ route('user.family-members.index') }}">Family Members</a>
                 <a href="{{ route('user.gotra-information.index') }}">Gotra</a>
@@ -35,7 +35,7 @@
 
     <div :class="{'block': open, 'hidden': ! open}" class="hidden border-t border-amber-100 md:hidden">
         <div class="space-y-1 px-4 py-3 text-sm">
-            <a class="block rounded-lg px-3 py-2" href="{{ route('user.dashboard') }}">Dashboard</a>
+            <a class="block rounded-lg px-3 py-2" href="{{ route('dashboard') }}">Dashboard</a>
             <a class="block rounded-lg px-3 py-2" href="{{ route('user.bookings.index') }}">Bookings</a>
             <a class="block rounded-lg px-3 py-2" href="{{ route('user.family-members.index') }}">Family Members</a>
             <a class="block rounded-lg px-3 py-2" href="{{ route('user.gotra-information.index') }}">Gotra</a>

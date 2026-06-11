@@ -5,11 +5,11 @@ use App\Http\Controllers\User\BookingFlowController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\FamilyMemberController;
 use App\Http\Controllers\User\GotraController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware(['auth', 'verified'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->as('user.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('family-members', FamilyMemberController::class)->except(['show']);
     Route::resource('gotra-information', GotraController::class)->except(['show']);
 
@@ -24,7 +24,4 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->as('user.')->group
     Route::get('book-puja/summary', [BookingFlowController::class, 'summary'])->name('bookings.summary');
     Route::post('book-puja/confirm', [BookingFlowController::class, 'confirm'])->name('bookings.confirm');
 
-    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });

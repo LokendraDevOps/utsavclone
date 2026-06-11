@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PageController;
 use App\Http\Controllers\Front\PujaController;
 use App\Http\Controllers\Front\TempleController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,6 +25,12 @@ Route::get('/blogs/{blog}', [BlogController::class, 'show'])->name('blogs.show')
 
 Route::get('/festivals', [FestivalController::class, 'index'])->name('festivals.index');
 Route::get('/festivals/{festival}', [FestivalController::class, 'show'])->name('festivals.show');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/user.php';

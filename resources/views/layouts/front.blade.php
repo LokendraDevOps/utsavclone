@@ -29,7 +29,7 @@
                 </nav>
                 <div class="flex items-center gap-3">
                     @auth
-                        <a href="{{ route('user.dashboard') }}" class="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" class="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm font-semibold text-slate-700">Login</a>
                         <a href="{{ route('register') }}" class="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white">Register</a>

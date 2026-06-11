@@ -127,10 +127,10 @@ class DatabaseSeeder extends Seeder
         $pujas = collect();
         foreach ($temples as $index => $temple) {
             foreach ([0, 1] as $offset) {
-                $name = $pujaNames[$offset + ($index % count($pujaNames))];
+                $name = $pujaNames[($offset + $index) % count($pujaNames)];
                 $pujas->push(Puja::create([
                     'temple_id' => $temple->id,
-                    'category_id' => $categories[$(($index + $offset) % $categories->count())]->id,
+                    'category_id' => $categories[($index + $offset) % $categories->count()]->id,
                     'name' => $name.' at '.$temple->name,
                     'slug' => Str::slug($name.' '.$temple->name.' '.$offset),
                     'description' => "A spiritually uplifting puja performed at {$temple->name} by experienced priests.",
@@ -212,13 +212,15 @@ class DatabaseSeeder extends Seeder
                 'status' => collect(BookingStatus::values())->random(),
             ]);
 
-            collect(range(1, random_int(0, 3)))->each(function () use ($booking) {
+            $memberCount = random_int(0, 3);
+
+            for ($memberIndex = 0; $memberIndex < $memberCount; $memberIndex++) {
                 BookingMember::create([
                     'booking_id' => $booking->id,
                     'name' => fake()->name(),
                     'relation' => collect(['Father', 'Mother', 'Spouse', 'Child'])->random(),
                 ]);
-            });
+            }
 
             return $booking;
         });
